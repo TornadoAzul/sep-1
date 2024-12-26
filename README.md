@@ -11,7 +11,6 @@
 </svg>
 
 ![CARB-ISO (DARK)(15)](https://github.com/user-attachments/assets/1fdb99bc-8adc-4454-b69a-1ed654bf48dc)
-
 # Sep-1 Model Package
 
 **Sep-1 Model** is a cutting-edge artificial intelligence model designed to provide assistance across multiple health domains. This Dart-based package is a product of Septerional's expertise in AI and was developed at the Barceloneta Intelligence Complex.
