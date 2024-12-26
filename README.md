@@ -2,7 +2,7 @@
 
 # Sep-1 Model Package
 
-**Sep-1 Model** is a cutting-edge artificial intelligence model designed to provide assistance across multiple health domains. This Dart-based package is a product of Septerional's expertise in AI and was developed at the Intelligence Complex in Barceloneta, Puerto Rico.
+**Sep-1 Model** is a cutting-edge artificial intelligence model designed to provide assistance across multiple health domains. This Dart-based package is a product of Septerional's expertise in AI and was developed at the Barceloneta Intelligence Complex.
 
 ## Overview
 Sep-1 Model offers two versions of the **Sep-1** model tailored to meet different needs:
