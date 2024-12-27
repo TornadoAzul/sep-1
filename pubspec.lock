@@ -79,7 +79,7 @@ packages:
     source: hosted
     version: "3.0.6"
   csv:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: csv
       sha256: "63ed2871dd6471193dffc52c0e6c76fb86269c00244d244297abbb355c84a86e"
@@ -215,7 +215,7 @@ packages:
     source: hosted
     version: "16.17.13"
   ml_dataframe:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: ml_dataframe
       sha256: "75434865e7ff85edcf8b006cb7c580e65a7863bb853010f41e12597b69d55db7"
