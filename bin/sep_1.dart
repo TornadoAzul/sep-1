@@ -1,4 +1,5 @@
 List<Map<String, dynamic>> SepOne({
+  required String language,
   int? heart,
   int? diabetes,
   int? respiration,
@@ -6,18 +7,50 @@ List<Map<String, dynamic>> SepOne({
   int? psicology,
 }) {
   List<Map<String, dynamic>> questions = [];
+  Map<String, Map<String, String>> translations = {
+    "heart_1": {
+      "es": "¿Cuál es tu presión arterial actual?",
+      "en": "What is your current blood pressure?",
+    },
+    "heart_2": {
+      "es": "¿Sientes algún dolor en el corazón?",
+      "en": "Do you feel any heart pain?",
+    },
+    "diabetes_1": {
+      "es": "¿Cuál es tu nivel actual de glucosa en sangre?",
+      "en": "What is your current blood glucose level?",
+    },
+    "respiration_1": {
+      "es": "¿Tuviste una recaída de asma durante el día anterior?",
+      "en": "Did you have an asthma relapse yesterday?",
+    },
+    "stomach_1": {
+      "es": "¿Cuántos carbohidratos planeas consumir hoy?",
+      "en": "How many carbohydrates do you plan to consume today?",
+    },
+    "psicology_1": {
+      "es": "¿Cómo te sientes hoy?",
+      "en": "How are you feeling today?",
+    },
+    "exercise_1": {
+      "es": "¿Qué nivel de ejercicio planeas realizar hoy?",
+      "en": "What level of exercise do you plan to do today?",
+    },
+  };
 
   // Heart-related questions
   if (heart == 1) {
     questions.add({
+      "id": "heart_1",
       "type": "number",
-      "title": "¿Cuál es tu presión arterial actual?",
+      "title": translations["heart_1"]![language],
       'requiredq': true,
     });
     questions.add({
+      "id": "heart_2",
       "type": "choose",
-      "title": "¿Sientes algún dolor en el corazón?",
-      "options": ["Sí", "No"],
+      "title": translations["heart_2"]![language],
+      "options": [0, 1],
       'requiredq': true,
     });
   }
@@ -26,14 +59,16 @@ List<Map<String, dynamic>> SepOne({
   if (diabetes != null) {
     if (diabetes == 1 || diabetes == 2) {
       questions.add({
+        "id": "diabetes_1",
         "type": "number",
-        "title": "¿Cuál es tu nivel actual de glucosa en sangre?",
+        "title": translations["diabetes_1"]![language],
         'requiredq': false,
       });
     } else if (diabetes == 3 || diabetes == 4) {
       questions.add({
+        "id": "diabetes_1",
         "type": "number",
-        "title": "¿Cuál es tu nivel actual de glucosa en sangre?",
+        "title": translations["diabetes_1"]![language],
         'requiredq': true,
       });
     }
@@ -42,34 +77,38 @@ List<Map<String, dynamic>> SepOne({
   // Respiration-related questions
   if (respiration == 1) {
     questions.add({
+      "id": "respiration_1",
       "type": "choose",
-      "title": "¿Tuviste una recaída de asma durante el día anterior?",
-      "options": ["Sí", "No"],
+      "title": translations["respiration_1"]![language],
+      "options": [0, 1],
       'requiredq': true,
     });
   }
 
   // Stomach-related questions
   questions.add({
+    "id": "stomach_1",
     "type": "number",
-    "title": "¿Cuántos carbohidratos planeas consumir hoy?",
+    "title": translations["stomach_1"]![language],
     'requiredq': true,
   });
 
   // Psychology-related questions
   if (psicology == 1) {
     questions.add({
+      "id": "psicology_1",
       "type": "type",
-      "title": "¿Cómo te sientes hoy?",
+      "title": translations["psicology_1"]![language],
       'requiredq': false,
     });
   }
 
   // Exercise-related question
   questions.add({
+    "id": "exercise_1",
     "type": "choose",
-    "title": "¿Qué nivel de ejercicio planeas realizar hoy?",
-    "options": ["Ninguno", "Ligero", "Moderado", "Intenso"],
+    "title": translations["exercise_1"]![language],
+    "options": [0, 1, 2, 3],
     'requiredq': true,
   });
 
@@ -77,74 +116,7 @@ List<Map<String, dynamic>> SepOne({
 }
 
 void SepOneProcess(Map<String, dynamic> responses) {
-  // Example of handling heart responses
-  if (responses.containsKey("¿Cuál es tu presión arterial actual?")) {
-    int bloodPressure = responses["¿Cuál es tu presión arterial actual?"];
-    print("La presión arterial reportada es: $bloodPressure");
-    // Add logic for blood pressure handling
-  }
-
-  if (responses.containsKey("¿Sientes algún dolor en el corazón?")) {
-    String heartPain = responses["¿Sientes algún dolor en el corazón?"];
-    print("Dolor en el corazón reportado: $heartPain");
-    // Add logic for heart pain handling
-  }
-
-  // Example of handling diabetes responses
-  if (responses.containsKey("¿Cuál es tu nivel actual de glucosa en sangre?")) {
-    int glucoseLevel =
-        responses["¿Cuál es tu nivel actual de glucosa en sangre?"];
-    print("Nivel de glucosa reportado: $glucoseLevel");
-    // Add logic for glucose level handling
-  }
-
-  // Example of handling respiration responses
-  if (responses
-      .containsKey("¿Tuviste una recaída de asma durante el día anterior?")) {
-    String asthmaRelapse =
-        responses["¿Tuviste una recaída de asma durante el día anterior?"];
-    print("Recaída de asma reportada: $asthmaRelapse");
-    // Add logic for asthma relapse handling
-  }
-
-  // Example of handling stomach responses
-  if (responses.containsKey("¿Cuántos carbohidratos planeas consumir hoy?")) {
-    int carbs = responses["¿Cuántos carbohidratos planeas consumir hoy?"];
-    print("Carbohidratos planeados: $carbs");
-    // Add logic for carbohydrate intake handling
-  }
-
-  // Example of handling psychology responses
-  if (responses.containsKey("¿Cómo te sientes hoy?")) {
-    String mood = responses["¿Cómo te sientes hoy?"];
-    print("Estado de ánimo reportado: $mood");
-    // Add logic for mood handling
-  }
-
-  // Example of handling exercise responses
-  if (responses.containsKey("¿Qué nivel de ejercicio planeas realizar hoy?")) {
-    String exerciseLevel =
-        responses["¿Qué nivel de ejercicio planeas realizar hoy?"];
-    print("Nivel de ejercicio planeado: $exerciseLevel");
-    // Add logic for exercise level handling
-  }
-}
-
-void main() {
-  // Example usage
-  var questions =
-      SepOne(heart: 1, diabetes: 2, respiration: 0, stomach: 1, psicology: 1);
-  print(questions);
-
-  // Example responses
-  var responses = {
-    "¿Cuál es tu presión arterial actual?": 120,
-    "¿Sientes algún dolor en el corazón?": "No",
-    "¿Cuál es tu nivel actual de glucosa en sangre?": 95,
-    "¿Cuántos carbohidratos planeas consumir hoy?": 200,
-    "¿Cómo te sientes hoy?": "Bien",
-    "¿Qué nivel de ejercicio planeas realizar hoy?": "Moderado",
-  };
-
-  SepOneProcess(responses);
+  responses.forEach((questionId, response) {
+    print("Respuesta a $questionId: $response");
+  });
 }
